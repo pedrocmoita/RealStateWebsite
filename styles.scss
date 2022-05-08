@@ -1,0 +1,410 @@
+@import "config.scss"; 
+
+//typography
+
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("images/teste1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+    min-height: 100vh;
+    border: .25rem solid $dark;
+    overflow: hidden;
+    font-family: $main-font;
+    color: $dark-ish;
+}
+
+h2{
+    margin: 1rem;
+
+    span {
+        background-image: linear-gradient(transparent calc(85% - 5px), darken($darken-beige, 0%) 2px);
+        background-size: 0;
+        background-repeat: no-repeat;
+        transition: 0.5s ease;
+    }
+}
+
+//main
+
+.main-grid{
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 1fr);
+
+    & > div{
+        border: .25rem solid $dark; 
+    }
+
+    .area-text-hover:hover{
+        span {
+            background-size: 100%;
+        }
+    }
+
+    .diffont{
+        font-family: $font1;
+    }
+
+    &__area-1{
+        position: relative;
+        grid-column-start: 1;
+        grid-row-start: 1;
+        grid-row-end: span 6;
+        @include titles-animation();
+
+        .title{
+            font-size: 3rem; 
+            margin: 3rem; 
+            font-family: $font1;
+        }
+
+        .title-inner::before{
+            content: '';
+            position: absolute;
+            width: .5rem;
+            border-radius: 10rem;
+            left: -1rem;
+            background-color: $dark-beige;
+            animation: hero-pseudo-bar .5s ease-in forwards 1.75s;
+        }
+
+        .coordenates{
+            position: absolute;
+            bottom: 0;
+            margin: .5rem;
+            p{
+                margin: 0;
+            }
+        }
+        
+        .pseudo-underline::before{
+            content: '';
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: .5rem;
+            top: 1rem;
+            left: 0;
+            bottom: 0;
+            background-color: $darken-beige;
+        }
+    }
+
+    &__area-2{
+        grid-column-start: 2;
+        grid-row-start: 1;
+        grid-row-end: span 3;
+        cursor: pointer;
+        position: relative;
+
+        h2{
+            position: absolute;
+            top: 0;
+        }
+
+        .hover-image{
+            background-image: url("./images/about-us-bg.jpg");
+            @include main-page-hover-image();
+        }
+
+        &:hover{
+            & .hover-image{
+                opacity: 1;
+            }
+
+            & h2{
+                color: white;
+            }
+        }
+    }
+
+    &__area-3{
+        grid-column-start: 3;
+        grid-column-end: span 2;
+        grid-row-start: 1;
+        grid-row-end: span 7;
+        cursor: pointer;
+        position: relative;
+
+        h2{
+            position: absolute;
+            top: 0;
+        }
+
+        .hover-image{
+            background-image: url("./images/properties-bg.jpg");
+            @include main-page-hover-image();
+        }
+
+        &:hover{
+            & .hover-image{
+                opacity: 1;
+            }
+
+            & h2{
+                color: white;
+            }
+        }
+    }
+
+    &__area-4{
+        grid-column-start: 2;
+        grid-row-start: 4;
+        grid-row-end: span 3;
+        @include flex();
+
+        .title-2{
+            font-size: 2rem;
+            animation: text-clip 1s ease-in-out;
+
+            &__border-fill-anim{
+                position: relative;
+                &::before{
+                    @include title-2-format();
+                    animation: bottom-border-fill 1s ease-in-out .55s forwards reverse;
+                }
+            }
+
+            &__border-fill-anim-2{
+                position: relative;
+                &::before{
+                    @include title-2-format();
+                    animation: bottom-border-fill 1s ease-in-out .55s forwards;
+                }
+            }
+        }
+    }
+
+    &__area-5{
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 7;
+        grid-row-end: span 4;
+        cursor: pointer;
+        position: relative;
+
+        h2{
+            position: absolute;
+            top: 0;
+        }
+
+        .hover-image{
+            background-image: url("./images/interior-bg.jpg");
+            @include main-page-hover-image();
+        }
+
+        &:hover{
+            & .hover-image{
+                opacity: 1;
+            }
+
+            & h2{
+                color: white;
+            }
+        }
+    }
+
+    &__area-6{
+        grid-column-start: 3;
+        grid-row-start: 8;
+        grid-row-end: span 4;
+        cursor: pointer;
+        position: relative;
+
+        h2{
+            position: absolute;
+            top: 0;
+        }
+
+        .hover-image{
+            background-image: url("./images/test1.jpg");
+            @include main-page-hover-image();
+        }
+
+        &:hover{
+            & .hover-image{
+                opacity: 1;
+            }
+
+            & h2{
+                color: white;
+            }
+        }
+    }
+
+    &__area-7{
+        grid-column-start: 4;
+        grid-row-start: 8;
+        grid-row-end: span 2;
+        cursor: pointer;
+        position: relative;
+
+        h2{
+            position: absolute;
+            bottom: 0;
+        }
+
+        .hover-image{
+            background-image: url("./images/test2.jpg");
+            @include main-page-hover-image();
+        }
+
+        &:hover{
+            & .hover-image{
+                opacity: 1;
+            }
+
+            & h2{
+                color: white;
+            }
+        }
+    }
+
+    &__area-8{
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 11;
+        position: relative;
+
+        .dev{
+            @include flex();
+        }
+
+        .dev-socials{
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            padding-left: .25rem;
+            padding-right: .25rem;
+            border-radius: 1rem;
+            border: 1px solid $dark;
+            background-color: $dark;
+
+            a{
+                text-decoration: none;
+                color: $dark;
+            }
+
+            .fa-brands{
+                font-size: 1.25rem;
+                padding: .25rem;
+                margin: .125rem;
+                cursor: pointer;
+                border: 3px solid $dark;
+                background-color: $light-beige;
+                transition: 300ms ease-in-out;
+                border-radius: .5rem;
+
+                &:hover{
+                    color: $dark-beige;
+                    transform: translateY(-.5rem);
+                }
+            }
+        }
+    }
+
+    &__area-9{
+        grid-column-start: 4;
+        grid-row-start: 10;
+        grid-row-end: span 2;
+
+        .title-3{
+            font-size: 1.5rem; 
+            animation: text-clip 1s ease-in-out;
+
+            .title-5{
+                margin-top: 1.5rem;
+                margin-left: 1.5rem;
+                display: inline-block;
+                position: relative;
+            }
+            
+            .text-5-inner::before{
+                content: '';
+                position: absolute;
+                border-radius: 5rem;
+                width: .25rem;
+                right: -.25rem;
+                background-color: $dark-beige;
+                animation: hero-pseudo-bar-2 .5s ease-in 2s forwards reverse;
+            }
+
+            .text-5-inner::after{
+                @include title-2-format();
+                background-color: $dark-beige;
+                left: 0;
+                border-radius: 5rem;
+                animation: bottom-border-fill-2 1s cubic-bezier(.36,.72,.64,.38) 1s forwards;
+            }
+        }
+    }
+}
+
+//keyframes
+
+@keyframes text-clip {
+    from {
+      clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+    to {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+  
+@keyframes outer-left {
+    from {
+      transform: translateX(45%);
+    }
+    to {
+      transform: none;
+    }
+}
+  
+@keyframes inner-left {
+    from {
+      transform: translateX(-35%);
+    }
+    to {
+      transform: none;
+    }
+}
+
+@keyframes hero-pseudo-bar{
+    from{
+        height: 0rem;
+    }
+    to{
+        height: 4.5rem;
+    }
+}
+
+@keyframes bottom-border-fill {
+    from{
+        width: 0%;
+    }
+    to{
+        width: 100%;
+    }
+}
+
+@keyframes hero-pseudo-bar-2{
+    from{
+        height: 120%;
+    }
+    to{
+        height: 0%;
+    }
+}
+
+@keyframes bottom-border-fill-2 {
+    from{
+        width: 0%;
+    }
+    to{
+        width: 105%;
+    }
+}

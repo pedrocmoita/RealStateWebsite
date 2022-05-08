@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Mrs+Saint+Delafield&family=Oswald:wght@600&display=swap');
+//fonts
+$font1: 'Comfortaa', cursive;
+$font2: 'Mrs Saint Delafield', cursive;
+$main-font: 'Oswald', sans-serif;
+//colors
+$dark-beige: #c8ae7e;
+$darken-beige: #d2bd96;
+$light-beige: #f5f5dd;
+$lighten-beige: #eae3c9;
+$dark-ish: #302c2c;
+$dark: rgb(19, 18, 18);
+//sizes
+
+//mixins
+@mixin titles-animation{
+    .title-inner {
+        display: inline-block;
+        animation: inner-left 1s 1s ease both;
+    }
+      
+    .text-1-inner {
+        display: inline-block;
+        animation: inner-left 1s 1s ease both, text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+    }
+      
+    .text-2-inner {
+        animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+    }
+      
+    .title {
+        animation: outer-left 1s 1s ease both;
+    }  
+}
+
+@mixin title-2-format{
+    content: '';
+    position: absolute;
+    width: 0;
+    bottom: 0;
+    height: .25rem;
+    background-color: $darken-beige;
+}
+
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin main-page-hover-image{
+    background-size: cover;
+    background-position: right;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 250ms ease-in-out;
+    filter: brightness(0.70);
+}
