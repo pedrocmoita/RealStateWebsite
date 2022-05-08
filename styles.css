@@ -27,6 +27,18 @@ h2 span {
   transition: 0.5s ease;
 }
 
+.loader {
+  background-image: url("./images/loader.gif");
+  background-position: center;
+  background-size: 15%;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10000;
+  background-color: white;
+}
+
 .main-grid {
   display: -ms-grid;
   display: grid;
@@ -597,41 +609,6 @@ h2 span {
   }
   to {
     width: 105%;
-  }
-}
-
-.loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: white;
-  height: 100vh;
-  width: 100vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.disapear {
-  -webkit-animation: vanish 1s forwards;
-          animation: vanish 1s forwards;
-}
-
-@-webkit-keyframes vanish {
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes vanish {
-  100% {
-    opacity: 0;
   }
 }
 /*# sourceMappingURL=styles.css.map */

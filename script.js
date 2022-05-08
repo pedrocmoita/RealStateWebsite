@@ -16,10 +16,8 @@ window.addEventListener('mousemove', function(e){
     this.document.getElementById('y').textContent = e.y;
 });
 
-
-var loader = document.querySelector(".loader");
-window.addEventListener('load', vanish);
-
-function vanish(){
-    loader.classList.add("disapear")
-}
+//preloader
+var loader = document.getElementById("loader");
+window.addEventListener('load', function(){
+    loader.style.display = "none";
+});
