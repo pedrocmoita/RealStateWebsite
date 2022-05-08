@@ -15,3 +15,11 @@ window.addEventListener('mousemove', function(e){
     this.document.getElementById('x').textContent = e.x;
     this.document.getElementById('y').textContent = e.y;
 });
+
+
+var loader = document.querySelector(".loader");
+window.addEventListener('load', vanish);
+
+function vanish(){
+    loader.classList.add("disapear")
+}
