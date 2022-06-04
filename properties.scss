@@ -1,0 +1,237 @@
+@import "config.scss";
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0.5rem solid #131212;
+    background-color: $dark-beige;
+    min-height: 100vh;
+    font-family: $main-font;
+}
+
+h1{font-size: 1.5rem;}
+h3{font-size: 1rem; color: $dark-beige;}
+h1, h3{margin: 0;}
+p, h1, h3{padding-left: 1rem;}
+p{margin-bottom: 1.5rem;}
+
+.loader{
+    background-image: url("./images/loader.gif");
+    background-position: center;
+    background-size: 15%;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10000;
+    background-color: white;
+}
+
+.container{
+    width: 95%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.number-font{
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 2rem;
+}
+
+.header{
+    margin-top: 2rem;
+}
+
+.generic-btn{
+    font-size: 1.25rem;
+    letter-spacing: 3px;
+    padding: .75rem 2rem;
+    border: 2px solid $dark;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: $main-font;
+
+    &::after{
+        content: "";
+        background-color: $lighten-beige;
+        width: 100%;
+        z-index: -1;
+        position: absolute;
+        height: 100%;
+        top: .5rem;
+        left: .5rem;
+        transition: 0.2s;
+    }
+
+    &::before{
+        content: "";
+        background-color: $dark;
+        position: absolute;
+        height: .125rem;
+        top: 1.75rem;
+        width: 0;
+    }
+
+    &:hover::after{
+        top: 0rem;
+        left: 0rem;
+    }
+
+    &:hover::before{
+        opacity: 1;
+        animation: back-width-anim .3s ease-in forwards;
+    }
+}
+
+.body{
+    min-height: 70vh;
+    width: 70%;
+    margin: 2.5rem auto;
+}
+
+.image-slider{
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
+    width: 100%;
+    box-shadow: 10px 15px 25px 0 rgba(0,0,0,.2);
+
+    &::after{
+        content: "";
+        border: 2px solid $dark;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -1rem;
+        left: -1rem;
+    }
+}
+
+.image-slide{
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+
+    &:first-child{
+        background: url('./images/propertie01.jpg') no-repeat center top/cover;
+    }
+
+    &:nth-child(2){
+        background: url('./images/propertie02.jpg') no-repeat center top/cover;
+    }
+
+    &:nth-child(3){
+        background: url('./images/propertie03.jpg') no-repeat center top/cover;
+    }
+
+    &:nth-child(4){
+        background: url('./images/propertie04.jpg') no-repeat center top/cover;
+    }
+
+    &.current{
+        opacity: 1;
+    }
+
+    &.current .content h1{
+        animation: text-clip .5s ease-in;
+    }
+
+    &.current .content p{
+        position: relative;
+        display: block;
+    }
+
+    &.current .content p::after{
+        content: '';
+        position: absolute;
+        padding: 0;
+        top: 0;
+        left: 0rem;
+        width: 100%;
+        height: 100%;
+        background: $dark-beige;
+        animation: a-ltr-after 1.5s cubic-bezier(.75, 0, .2, 1) forwards;
+    }
+}
+
+.content{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    color: $dark;
+    background-color: $lighten-beige;
+    opacity: .95;
+    width: 40%;
+}
+
+.buttons button{
+    font-size: 1rem;
+    border: 0;
+    background-color: $dark-beige;
+    font-family: $main-font;
+    position: relative;
+    cursor: pointer;
+    margin-top: 2rem;
+    
+    &::before{
+        content: "";
+        background-color: $dark;
+        position: absolute;
+        height: .125rem;
+        top: .95rem;
+        width: 0;
+        background-color: $light-beige;
+    }
+
+    &:hover::before{
+        opacity: 1;
+        animation: back-width-anim-adapted .3s ease-in forwards;
+    }
+}
+
+@media (max-width: 1500px) {
+    .body{
+        width: 95%;
+    }
+}
+
+@keyframes back-width-anim {
+    from{
+        width: 0%;
+    }
+    to{
+        width: 42.5%;
+    }
+}
+
+@keyframes back-width-anim-adapted {
+    from{
+        width: 0%;
+    }
+    to{
+        width: 72.5%;
+    }
+}
+
+@keyframes text-clip {
+    from {
+      clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+    to {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@keyframes a-ltr-after{
+    0% {transform: translateX(0%)}
+    100% {transform: translateX(-120%)}
+}
